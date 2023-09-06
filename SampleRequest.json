@@ -1,0 +1,107 @@
+
+Add Request
+{
+    "Action": "Add",
+    "Add": {
+        "TableName": "Employee",
+        "Item": [
+            {
+                "EmployeeId": {
+                    "S": "iu2526-afy141"
+                },
+                "EmployeeName": {
+                    "S": "Cliff"
+                },
+                "Department": {
+                    "S": "Finance"
+                },
+                "isActive": {
+                    "S": "false"
+                }
+            },
+            {
+                 "EmployeeId": {
+                    "S": "wty252-5jk2k2"
+                },
+                "EmployeeName": {
+                    "S": "Josh"
+                },
+                "Department": {
+                    "S": "HR"
+                },
+                "isActive": {
+                    "S": "true"
+                }
+            }
+        ]
+    }
+}
+
+Update Request 
+{
+    "Action": "Update",
+    "Update": {
+        "TableName": "Employee",
+        "TableKey": {
+            "EmployeeId": {
+                "S": "iu2526-afy141"
+            }
+        },
+        "Item": {
+            "Department": {
+                "Value": {
+                    "S": "Recruitment"
+                }
+            },
+            "isActive": {
+                "Value": {
+                    "S": "true"
+                }
+            }
+        }
+    }
+}
+
+Delete Request
+{
+    "Action": "Delete",
+    "Delete": {
+        "TableName": "Employee",
+        "Key": {
+            "EmployeeId": {
+                "S": "iu2526-afy141"
+            }
+        }
+    }
+}
+
+Query Request
+{
+  "Action":"Query",
+  "Query":{
+    "ExpressionAttributeValues":
+    {
+      ":employeeIdValue":{
+          "S":"wty252-5jk2k2"
+      }
+    },  
+    "TableName":"Employee",
+    "KeyConditionExpression":"EmployeeId = :employeeIdValue"
+  }
+}
+
+Scan Request
+{
+  "Action":"Scan",
+  "Scan":{
+    "TableName":"Employee",
+    "ExpressionAttributeValues":
+    {
+      ":namePrefix":{
+          "S":"true"
+      }
+    },  
+    "FilterExpression":"isActive = :namePrefix",
+    "ProjectionExpression" :"EmployeeName"
+  }
+}

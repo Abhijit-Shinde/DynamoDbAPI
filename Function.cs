@@ -24,7 +24,7 @@ public class Function
     public async Task<string> FunctionHandler(APIGatewayHttpApiV2ProxyRequest request, ILambdaContext context)
     {
         var dynamoDbClient = new AmazonDynamoDBClient();
-        var errorMessage = String.Empty;
+        string? errorMessage;
 
         if (!string.IsNullOrEmpty(request.Body))
         {
